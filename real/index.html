@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Risks - المخاطر السيبرانية</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --page-bg: #0B1220;
+            --card-bg: #172338;
+            --inner-bg: #101C2E;
+            --border: #304158;
+            --heading: #F8FAFC;
+            --text: #CBD5E1;
+            --accent: #22D3EE;
+            --warning: #FBBF24;
+            --success: #34D399;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--page-bg);
+            color: var(--text);
+            font-family: Tahoma, Arial, sans-serif;
+            line-height: 1.8;
+        }
+
+        .page-container {
+            width: min(calc(100% - 40px), 1000px);
+            margin-inline: auto;
+            padding-block: 56px 80px;
+        }
+
+        .language-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .language-switch {
+            min-width: 104px;
+            padding: 8px 18px;
+            color: var(--accent);
+            background: var(--inner-bg);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            font: inherit;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .language-switch:hover,
+        .language-switch:focus-visible {
+            background: #17364B;
+        }
+
+        h1, h2, h3, p {
+            margin-top: 0;
+        }
+
+        h1, h2 {
+            color: var(--heading);
+        }
+
+        .introduction {
+            padding-block: 20px 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .introduction h1 {
+            margin-bottom: 4px;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            line-height: 1.3;
+        }
+
+        .introduction-tagline {
+            margin-bottom: 18px;
+            color: var(--accent);
+            font-size: 1.35rem;
+            font-weight: bold;
+        }
+
+        .introduction-description {
+            max-width: 720px;
+            margin-bottom: 0;
+        }
+
+        .topics {
+            margin-block: 40px;
+            padding: 28px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .topics h2 {
+            margin-bottom: 18px;
+            font-size: 1.5rem;
+        }
+
+        .topics-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+            gap: 12px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .topics-list a {
+            display: block;
+            height: 100%;
+            padding: 10px 14px;
+            color: var(--accent);
+            background: var(--inner-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        .topics-list a:hover,
+        .topics-list a:focus-visible {
+            background: #17364B;
+            border-color: var(--accent);
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .threats {
+            display: grid;
+            gap: 24px;
+        }
+
+        .threat-card {
+            padding: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            scroll-margin-top: 24px;
+        }
+
+        .threat-image {
+            display: grid;
+            place-items: center;
+            width: 96px;
+            height: 96px;
+            margin-bottom: 18px;
+            background: var(--inner-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+        }
+
+        .threat-image img {
+            display: block;
+            width: 64px;
+            height: 64px;
+        }
+
+        .threat-card h2 {
+            margin-bottom: 16px;
+            font-size: 1.65rem;
+        }
+
+        .threat-question {
+            margin-bottom: 6px;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .threat-definition p:last-child,
+        .threat-example p {
+            margin-bottom: 0;
+        }
+
+        .threat-example,
+        .threat-prevention {
+            margin-top: 20px;
+            padding: 18px 20px;
+            border-radius: 12px;
+            border-inline-start: 3px solid;
+        }
+
+        .threat-example {
+            background: rgb(251 191 36 / 8%);
+            border-color: var(--warning);
+        }
+
+        .threat-prevention {
+            background: rgb(52 211 153 / 8%);
+            border-color: var(--success);
+        }
+
+        .threat-example h3,
+        .threat-prevention h3 {
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+        }
+
+        .threat-example h3 {
+            color: var(--warning);
+        }
+
+        .threat-prevention h3,
+        .prevention-list li::marker {
+            color: var(--success);
+        }
+
+        .prevention-list {
+            margin-block: 0;
+            padding-inline-start: 22px;
+        }
+
+        .prevention-list li + li {
+            margin-top: 6px;
+        }
+
+        .project-team {
+            margin-top: 24px;
+            padding: 32px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+
+        .project-team h2 {
+            margin-bottom: 18px;
+            font-size: 1.65rem;
+        }
+
+        .project-team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 16px;
+        }
+
+        .project-team-group {
+            padding: 18px 20px;
+            background: var(--inner-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .project-team-group h3 {
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-size: 1.15rem;
+        }
+
+        .project-team-group ul {
+            margin: 0;
+            padding-inline-start: 22px;
+        }
+
+        .project-team-group p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .page-container {
+                width: min(calc(100% - 28px), 1000px);
+                padding-block: 36px 56px;
+            }
+
+            .topics,
+            .threat-card,
+            .project-team {
+                padding: 22px;
+            }
+
+            .introduction-tagline {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page-container">
+        <div class="language-actions" dir="ltr">
+            <button class="language-switch" id="language-switch" type="button" dir="auto" hidden>English</button>
+        </div>
+
+        <div class="introduction">
+            <p class="section-label">عن المشروع</p>
+            <h1>المخاطر السيبرانية</h1>
+            <p class="introduction-tagline">الوعي هو أول خطوط الحماية</p>
+            <p class="introduction-description">
+                يهدف المشروع إلى رفع مستوى الوعي حول المخاطر السيبرانية وطرح بعض طرق الوقاية منها.
+            </p>
+        </div>
+
+        <div class="topics">
+            <h2>المواضيع التي نتناولها:</h2>
+            <ul class="topics-list">
+                <li><a href="#phishing">التصيد الاحتيالي</a></li>
+                <li><a href="#ransomware">برامج الفدية</a></li>
+                <li><a href="#account-theft">سرقة الحسابات وكلمات المرور</a></li>
+                <li><a href="#ddos">هجمات حجب الخدمة الموزعة</a></li>
+                <li><a href="#ai-impact">تأثير الذكاء الاصطناعي على الهجمات السيبرانية</a></li>
+            </ul>
+        </div>
+
+        <div class="threats">
+            <div class="threat-card phishing" id="phishing">
+                <div class="threat-image">
+                    <img src="images/phishing.svg" alt="رسم لرسالة بريد إلكتروني تحمل علامة تحذير" width="96" height="96" loading="lazy">
+                </div>
+                <h2>التصيد الاحتيالي</h2>
+                <div class="threat-definition">
+                    <p class="threat-question">ما هو التصيد الاحتيالي؟</p>
+                    <p>هو محاولة خداعك برسالة أو صفحة تنتحل صفة جهة موثوقة، بهدف الحصول على معلوماتك أو دفعك إلى فتح رابط ضار.</p>
+                </div>
+                <div class="threat-example">
+                    <h3>مثال من الواقع اليومي</h3>
+                    <p>تصلك رسالة تزعم أن حسابك الجامعي سيتوقف، وتطلب تسجيل الدخول عبر رابط غير رسمي. الاستعجال هنا وسيلة لدفعك إلى التصرف قبل التحقق.</p>
+                </div>
+                <div class="threat-prevention">
+                    <h3>كيف تحمي نفسك؟</h3>
+                    <ul class="prevention-list">
+                        <li>ادخل إلى موقع الجهة من عنوانه الرسمي بدل فتح الرابط الموجود في الرسالة.</li>
+                        <li>تحقق من الطلب عبر وسيلة تواصل رسمية إذا كان مستعجلًا أو غير متوقع.</li>
+                        <li>لا تُدخل كلمة المرور أو رمز التحقق في صفحة وصلت إليها من رابط مشبوه.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="threat-card ransomware" id="ransomware">
+                <div class="threat-image">
+                    <img src="images/ransomware.svg" alt="رسم لملف مقفل يرمز إلى برامج الفدية" width="96" height="96" loading="lazy">
+                </div>
+                <h2>برامج الفدية</h2>
+                <div class="threat-definition">
+                    <p class="threat-question">ما هي برامج الفدية؟</p>
+                    <p>هي نوع من البرمجيات الخبيثة التي تمنعك من الوصول إلى ملفاتك أو نظامك، وتطلب منك دفع مبلغ مالي لاستعادة الوصول.</p>
+                </div>
+                <div class="threat-example">
+                    <h3>مثال من الواقع اليومي</h3>
+                    <p>قد تصلك رسالة بريد إلكتروني بمرفق يبدو كفاتورة، وقد يؤدي فتحه إلى تشغيل برنامج خبيث يشفّر ملفاتك ويطالبك بدفع فدية.</p>
+                </div>
+                <div class="threat-prevention">
+                    <h3>كيف تحمي نفسك؟</h3>
+                    <ul class="prevention-list">
+                        <li>حدّث نظام التشغيل والبرامج باستمرار.</li>
+                        <li>لا تفتح المرفقات أو الملفات غير المتوقعة قبل التأكد من مصدرها.</li>
+                        <li>احتفظ بنسخ احتياطية لملفاتك المهمة، واختبر استعادتها، وافصل نسخة منها عن جهازك.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="threat-card account-theft" id="account-theft">
+                <div class="threat-image">
+                    <img src="images/account-theft.svg" alt="رسم لحساب مستخدم ومفتاح يرمزان إلى بيانات الدخول" width="96" height="96" loading="lazy">
+                </div>
+                <h2>سرقة الحسابات وكلمات المرور</h2>
+                <div class="threat-definition">
+                    <p class="threat-question">ما هي سرقة الحسابات وكلمات المرور؟</p>
+                    <p>هي وصول شخص غير مصرح له إلى حساباتك بعد حصوله على بيانات تسجيل الدخول، مثلًا عبر التصيد الاحتيالي أو البرامج الخبيثة.</p>
+                </div>
+                <div class="threat-example">
+                    <h3>مثال من الواقع اليومي</h3>
+                    <p>تستخدم كلمة المرور نفسها لبريدك الإلكتروني ومتجر إلكتروني. إذا تسرّبت بيانات المتجر، فقد يجربها مهاجم للدخول إلى بريدك.</p>
+                </div>
+                <div class="threat-prevention">
+                    <h3>كيف تحمي نفسك؟</h3>
+                    <ul class="prevention-list">
+                        <li>استخدم كلمة مرور قوية ومختلفة لكل حساب، ويمكنك حفظها في مدير كلمات مرور.</li>
+                        <li>فعّل التحقق بخطوتين للحسابات التي تدعمه، خاصة بريدك الإلكتروني.</li>
+                        <li>إذا عرفت بتسرّب كلمة مرور، غيّرها في كل حساب استخدمتها فيه.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="threat-card ddos" id="ddos">
+                <div class="threat-image">
+                    <img src="images/ddos.svg" alt="رسم لخادم متعطل يرمز إلى توقف الخدمة" width="96" height="96" loading="lazy">
+                </div>
+                <h2>هجمات حجب الخدمة الموزعة</h2>
+                <div class="threat-definition">
+                    <p class="threat-question">ما هي هجمات حجب الخدمة الموزعة؟</p>
+                    <p>هي هجمات تستهدف تعطيل خدمة معينة عن طريق إغراقها بحركة مرور غير طبيعية من عدة مصادر.</p>
+                </div>
+                <div class="threat-example">
+                    <h3>مثال من الواقع اليومي</h3>
+                    <p>قد تواجه صعوبة في الوصول إلى موقعك المفضل بسبب هجوم موزّع لحجب الخدمة يستهدفه، مما يجعله غير متاح للمستخدمين.</p>
+                </div>
+                <div class="threat-prevention">
+                    <h3>كيف تحمي موقعك؟</h3>
+                    <ul class="prevention-list">
+                        <li>إذا كنت تدير موقعًا، استخدم خدمة للحماية من هجمات حجب الخدمة الموزعة بالتنسيق مع مزود الاستضافة.</li>
+                        <li>راقب ارتفاع الزيارات غير المعتاد، وجهّز طريقة للتواصل مع مزود الخدمة عند حدوث هجوم.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="threat-card ai-impact" id="ai-impact">
+                <div class="threat-image">
+                    <img src="images/ai-impact.svg" alt="رسم لدماغ متصل بدوائر إلكترونية يرمز إلى الذكاء الاصطناعي" width="96" height="96" loading="lazy">
+                </div>
+                <h2>تأثير الذكاء الاصطناعي على الهجمات السيبرانية</h2>
+                <div class="threat-definition">
+                    <p class="threat-question">ما هو تأثير الذكاء الاصطناعي على الهجمات السيبرانية؟</p>
+                    <p>يمكن أن يُستخدم الذكاء الاصطناعي لتحسين الهجمات السيبرانية، مثل تحليل سلوك المستخدمين لاكتشاف نقاط الضعف أو إنشاء رسائل تصيد أكثر إقناعًا.</p>
+                </div>
+                <div class="threat-example">
+                    <h3>مثال من الواقع اليومي</h3>
+                    <p>قد يستخدم المهاجمون تقنيات الذكاء الاصطناعي لتوليد رسائل بريد إلكتروني تبدو وكأنها من أصدقائك أو زملائك، مما يزيد من احتمالية الوقوع في الفخ.</p>
+                </div>
+                <div class="threat-prevention">
+                    <h3>كيف تحمي نفسك؟</h3>
+                    <ul class="prevention-list">
+                        <li>تحقق من الطلبات الحساسة عبر رقم أو وسيلة تواصل تعرفها مسبقًا، حتى لو بدت الرسالة مألوفة.</li>
+                        <li>لا تشارك كلمات المرور أو رموز التحقق استجابة لرسالة أو مكالمة غير متوقعة.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-team">
+            <h2>فريق المشروع</h2>
+            <div class="project-team-grid">
+                <div class="project-team-group">
+                    <h3>القائمون على المشروع</h3>
+                    <ul>
+                        <li>عبدالله فارس</li>
+                        <li>نواف طوهري</li>
+                        <li>محمد هروبي</li>
+                    </ul>
+                </div>
+                <div class="project-team-group">
+                    <h3>الدكتور المسؤول</h3>
+                    <p>عصام خالد عسيسي</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const languageButton = document.getElementById("language-switch");
+        const arabicTitle = document.title;
+        const textTranslations = [];
+        const imageTranslations = [];
+
+        function addText(selector, english) {
+            const element = document.querySelector(selector);
+            if (!element) throw new Error(`Missing translation target: ${selector}`);
+            textTranslations.push({ element, arabic: element.textContent.trim(), english });
+        }
+
+        function addList(selector, englishItems) {
+            const elements = document.querySelectorAll(selector);
+            if (elements.length !== englishItems.length) {
+                throw new Error(`Translation count does not match: ${selector}`);
+            }
+            elements.forEach((element, index) => {
+                textTranslations.push({
+                    element,
+                    arabic: element.textContent.trim(),
+                    english: englishItems[index]
+                });
+            });
+        }
+
+        addText(".section-label", "About the project");
+        addText(".introduction h1", "Cyber Risks");
+        addText(".introduction-tagline", "Awareness is the first line of defense");
+        addText(".introduction-description", "This project aims to raise awareness of cyber risks and introduce ways to prevent them.");
+        addText(".topics h2", "Topics covered");
+        addList(".topics-list a", [
+            "Phishing",
+            "Ransomware",
+            "Account and Password Theft",
+            "Distributed Denial-of-Service Attacks",
+            "The Impact of AI on Cyberattacks"
+        ]);
+
+        const threats = {
+            phishing: {
+                title: "Phishing",
+                question: "What is phishing?",
+                definition: "Phishing is an attempt to trick you with a message or page that impersonates a trusted organization to steal your information or make you open a harmful link.",
+                example: "You receive a message claiming that your university account will be suspended and asking you to sign in through an unofficial link. The urgency is meant to make you act before checking.",
+                preventionHeading: "How can you protect yourself?",
+                tips: [
+                    "Open the organization's website using its official address instead of the link in the message.",
+                    "Verify urgent or unexpected requests through an official contact channel.",
+                    "Do not enter your password or verification code on a page opened from a suspicious link."
+                ],
+                imageAlt: "Illustration of an email with a warning sign"
+            },
+            ransomware: {
+                title: "Ransomware",
+                question: "What is ransomware?",
+                definition: "Ransomware is malware that blocks access to your files or device and demands payment to restore it.",
+                example: "You receive an email attachment that looks like an invoice. Opening it may run malware that encrypts your files and demands a ransom.",
+                preventionHeading: "How can you protect yourself?",
+                tips: [
+                    "Keep your operating system and software up to date.",
+                    "Check the source before opening unexpected attachments or files.",
+                    "Keep backups of important files, test that you can restore them, and keep one copy separate from your device."
+                ],
+                imageAlt: "Illustration of a locked file representing ransomware"
+            },
+            "account-theft": {
+                title: "Account and Password Theft",
+                question: "What is account and password theft?",
+                definition: "Account theft is unauthorized access to your accounts after someone obtains your sign-in details, for example through phishing or malware.",
+                example: "You use the same password for your email and an online store. If the store's data is leaked, an attacker may try that password on your email account.",
+                preventionHeading: "How can you protect yourself?",
+                tips: [
+                    "Use a strong, unique password for every account. A password manager can help you store them.",
+                    "Turn on two-factor authentication where available, especially for your email account.",
+                    "If a password is exposed in a data breach, change it on every account where you used it."
+                ],
+                imageAlt: "Illustration of a user account and key representing sign-in details"
+            },
+            ddos: {
+                title: "Distributed Denial-of-Service Attacks",
+                question: "What is a distributed denial-of-service attack?",
+                definition: "This attack disrupts a service by flooding it with unusually heavy traffic from many sources.",
+                example: "You may be unable to access a favorite website because a distributed denial-of-service attack has made it unavailable to visitors.",
+                preventionHeading: "How can you protect your website?",
+                tips: [
+                    "If you manage a website, arrange DDoS protection with your hosting provider.",
+                    "Monitor unusual traffic spikes and have a way to contact your provider during an attack."
+                ],
+                imageAlt: "Illustration of a server outage representing an unavailable service"
+            },
+            "ai-impact": {
+                title: "The Impact of AI on Cyberattacks",
+                question: "How can AI affect cyberattacks?",
+                definition: "AI can make cyberattacks more effective, for example by analyzing user behavior to find weaknesses or creating more convincing phishing messages.",
+                example: "Attackers may use AI to write emails that appear to come from your friends or colleagues, making the deception more convincing.",
+                preventionHeading: "How can you protect yourself?",
+                tips: [
+                    "Verify sensitive requests through a phone number or contact method you already know, even if the message seems familiar.",
+                    "Do not share passwords or verification codes in response to an unexpected message or call."
+                ],
+                imageAlt: "Illustration of a brain and electronic circuits representing AI"
+            }
+        };
+
+        for (const [id, content] of Object.entries(threats)) {
+            const card = `#${id}`;
+            addText(`${card} h2`, content.title);
+            addText(`${card} .threat-question`, content.question);
+            addText(`${card} .threat-definition p:last-child`, content.definition);
+            addText(`${card} .threat-example h3`, "Everyday example");
+            addText(`${card} .threat-example p`, content.example);
+            addText(`${card} .threat-prevention h3`, content.preventionHeading);
+            addList(`${card} .prevention-list li`, content.tips);
+
+            const image = document.querySelector(`${card} img`);
+            if (!image) throw new Error(`Missing image: ${id}`);
+            imageTranslations.push({ image, arabic: image.alt, english: content.imageAlt });
+        }
+
+        addText(".project-team > h2", "Project Team");
+        addText(".project-team-group:first-child h3", "Project members");
+        addList(".project-team-group:first-child li", [
+            "Abdullah Fares",
+            "Nawaf Tohari",
+            "Mohammed Haroubi"
+        ]);
+        addText(".project-team-group:last-child h3", "Supervising professor");
+        addText(".project-team-group:last-child p", "Dr. Essam Khalid Asisi");
+
+        function setLanguage(language) {
+            const english = language === "en";
+            textTranslations.forEach(({ element, arabic, english: translation }) => {
+                element.textContent = english ? translation : arabic;
+            });
+            imageTranslations.forEach(({ image, arabic, english: translation }) => {
+                image.alt = english ? translation : arabic;
+            });
+
+            document.documentElement.lang = language;
+            document.documentElement.dir = english ? "ltr" : "rtl";
+            document.title = english ? "Cyber Risks" : arabicTitle;
+            languageButton.textContent = english ? "العربية" : "English";
+            languageButton.lang = english ? "ar" : "en";
+            languageButton.setAttribute("aria-label", english ? "Switch to Arabic" : "التبديل إلى الإنجليزية");
+        }
+
+        languageButton.addEventListener("click", () => {
+            setLanguage(document.documentElement.lang === "ar" ? "en" : "ar");
+        });
+        setLanguage("ar");
+        languageButton.hidden = false;
+    </script>
+</body>
+</html>

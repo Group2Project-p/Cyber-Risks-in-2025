@@ -55,7 +55,10 @@
                 margin: 0;
                 padding: 0;
             }
-
+            img {
+                height: 200px;
+                width: 300px;
+            }
         </style>
         <!-- design codes -->
          <!--
@@ -100,25 +103,82 @@
         <button class="tow"><i>tap</i></button>
         <p>هذا نص تجريبي في صفحتي الإلكترونية</p>
         <h3>المؤسسة الرقمية للتوعية الرقمية</h3>
-        <a href="https://edugate.jazanu.edu.sa/jazan/init" target="_blank">this link to jazan website</a>
-        <p><a href="https://lms.jazanu.edu.sa/webapps/login/" target="_blank" title="Go to jazan blackboard">jazan blackboard</a></p>
-        <p><a href="#Abdullah" title="Go to Abdullah">Go to Abdullah</a></p>
-        <p><a href="mailto:axd438800@gmail.com" title="Send email">text me</a></p>
-        <img src="img/test img.png" alt="">
-        <!--
-        ol => ordered list
-        li => list item
-        ul => unordered list
-        dl => definition list 
-        dt => definition term
-        dd => definition description
-        
+        <div class="links">
+            <a href="https://edugate.jazanu.edu.sa/jazan/init" target="_blank">this link to jazan website</a>
+            <p><a href="https://lms.jazanu.edu.sa/webapps/login/" target="_blank" title="Go to jazan blackboard">jazan blackboard</a></p>
+            <p><a href="#Abdullah" title="Go to Abdullah">Go to Abdullah</a></p>
+            <p><a href="mailto:axd438800@gmail.com" title="Send email">text me</a></p>
+            <img src="img/test img.png" alt="">
+        </div>
+        <div class="lists">
+            <!--
+            ol => ordered list
+            li => list item
+            ul => unordered list
+            dl => definition list 
+            dt => definition term
+            dd => definition description
+            
+            -->
+            <ul><h3>Types</h3><li>HTML</li><li>CSS</li><li>JavaScript</li></ul>
+            <ul>CSS
+                <ul>
+                    <li>CSS1</li>
+                    <li>CSS2</li>
+                    <li>CSS3</li>
+                </ul>
+            </ul>
+            <h3>Names</h3>
+            <ol reversed, type="A">
+                <li>Ahmed</li>
+                <li>Abdullah</li>
+                <li>Mohamed</li>
+            </ol>
+            <ol start="10">
+                <li>Ahmed</li>
+                <li>Abdullah</li>
+                <li>Mohamed</li>
+            </ol>
+        </div>
+
+        <div class="tables">
+            <!--
+            table => table
+            tr => table row
+            th => table header
+            td => table data
+            thead => table head
+            tbody => table body 
+            tfoot => table foot
+            -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ahmed</td>
+                        <td>20</td>
+                        <td>123456787</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total: 1</td>
+                    </tr>
+                </tfoot>
+            </table> 
+        </div>
+
+        <!-- 
+            span => عزل كلمة او جزء من النص للتنصيق
+            br => new line
+            hr => horizontal line
         -->
-         <h3>Names</h3>
-         <ol>
-            <li>Ahmed</li>
-            <li>Abdullah</li>
-            <li>Mohamed</li>
-         </ol>
+
     </body>
 </html>
